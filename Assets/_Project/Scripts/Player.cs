@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int _playerNumber;
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpStrength;
     [SerializeField] private Rigidbody2D _rb;
@@ -21,13 +22,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        h = Input.GetAxis("Horizontal");
+        h = Input.GetAxis($"HorizontalP{_playerNumber}");
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown($"JumpP{_playerNumber}"))
         {
             _isJumping = true;
         }
-
     }
 
     void FixedUpdate()
