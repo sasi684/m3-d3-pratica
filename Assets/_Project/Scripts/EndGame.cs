@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
+    private int playersArrived = 0;
     void Start()
     {
         
@@ -14,8 +15,15 @@ public class EndGame : MonoBehaviour
         
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Livello completato!");
+        playersArrived++;
+        if(playersArrived >= 2)
+            Debug.Log("Livello completato!");
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        playersArrived--;
     }
 }
